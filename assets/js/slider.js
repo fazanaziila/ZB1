@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.slider');
+    if (!slider) return; // Only proceed if slider exists
+
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.slider-dot');
     const prevBtn = document.querySelector('.slider-arrow.prev');
