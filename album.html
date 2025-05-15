@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="assets/css/slider.css">
 </head>
 <body>
+    <div class="loading-page">
+        <img src="assets/images/rose.gif" alt="Loading...">
+    </div>
+    
     <nav class="navbar">
         <div class="nav-logo">
             <a href="zb1.html"><img src="assets/images/logowhite.png" alt="ZB1 Logo"></a>
@@ -21,117 +25,47 @@
         </div>
     </nav>
 
-    <section class="album-section">
-        <h2>KOREAN ALBUM</h2>
-        <div class="album-grid">
-            <div class="album-item">
-                <a href="https://i.pinimg.com/736x/79/af/bd/79afbd14b7957d8579d000b054ea074c.jpg" target="_blank">
-                    <img src="https://i.pinimg.com/736x/79/af/bd/79afbd14b7957d8579d000b054ea074c.jpg" alt="Youth In The Shade" class="album-cover">
-                    <div class="album-info">
-                        <h3>YOUTH IN THE SHADE</h3>
-                        <p>July 10, 2023</p>
-                        <p>– 1st Mini Album</p>
-                    </div>
-                </a>
+    <div class="album-container">
+        <section class="album-section">
+            <h2>KOREAN ALBUM</h2>
+            <div class="album-grid" id="korean-albums">
+                <!-- Korean albums will be loaded dynamically -->
             </div>
-            <div class="album-item">
-                <a href="https://i.pinimg.com/736x/57/80/3a/57803a20ba8b5f0625bf6dd9e37a1519.jpg" target="_blank">
-                    <img src="https://i.pinimg.com/736x/57/80/3a/57803a20ba8b5f0625bf6dd9e37a1519.jpg" alt="In Bloom" class="album-cover">
-                    <div class="album-info">
-                        <h3>MELTING POINT</h3>
-                        <p>November 6, 2023</p>
-                        <p>– 2nd Mini Album</p>
-                    </div>
-                </a>
-            </div>
-            <div class="album-item">
-                <a href="https://i.pinimg.com/736x/15/af/66/15af66dac02ef8fb5f95d8f1484ece86.jpg" target="_blank">
-                    <img src="https://i.pinimg.com/736x/15/af/66/15af66dac02ef8fb5f95d8f1484ece86.jpg" alt="You Had Me At Hello" class="album-cover">
-                    <div class="album-info">
-                        <h3>You Had Me At Hello</h3>
-                        <p>May 13, 2024</p>
-                        <p>– 3rd Mini Album</p>
-                    </div>
-                </a>
-            </div>
-            <div class="album-item">
-                <a href="https://i.pinimg.com/736x/ba/d5/8a/bad58adbe2e5435e99c7afea1efbaf2f.jpg" target="_blank">
-                    <img src="https://i.pinimg.com/736x/ba/d5/8a/bad58adbe2e5435e99c7afea1efbaf2f.jpg" alt="Coming Forever" class="album-cover">
-                    <div class="album-info">
-                        <h3>Cinema Paradise</h3>
-                        <p>August 26, 2024</p>
-                        <p>– 4th Mini Album</p>
-                    </div>
-                </a>
-            </div>
-            <div class="album-item">
-                <a href="https://i.pinimg.com/736x/97/cb/35/97cb3571bffeece70578133f4abbd6e2.jpg" target="_blank">
-                    <img src="https://i.pinimg.com/736x/97/cb/35/97cb3571bffeece70578133f4abbd6e2.jpg" alt="New Paradise" class="album-cover">
-                    <div class="album-info">
-                        <h3>Blue Paradise</h3>
-                        <p>February 24, 2025</p>
-                        <p>– 5th Mini Album</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="album-section">
-        <h2>JAPAN ALBUM</h2>
-        <div class="album-grid">
-            <div class="album-item">
-                <a href="https://i.pinimg.com/736x/60/76/cd/6076cdd03ec5d7bbc87ca4addc250481.jpg" target="_blank">
-                    <img src="https://i.pinimg.com/736x/60/76/cd/6076cdd03ec5d7bbc87ca4addc250481.jpg" alt="Crush" class="album-cover">
-                    <div class="album-info">
-                        <h3>Yura Yura (ゆらゆら -運命の花-)</h3>
-                        <p>March 20, 2024</p>
-                        <p>– Japanese Single</p>
-                    </div>
-                </a>
+        <section class="album-section">
+            <h2>JAPAN ALBUM</h2>
+            <div class="album-grid" id="japanese-albums">
+                <!-- Japanese albums will be loaded dynamically -->
             </div>
-            <div class="album-item">
-                <a href="https://pbs.twimg.com/media/GMi66QxawAAaDPY?format=jpg&name=4096x4096" target="_blank">
-                    <img src="https://pbs.twimg.com/media/GMi66QxawAAaDPY?format=jpg&name=4096x4096" alt="Your Sky" class="album-cover">
-                    <div class="album-info">
-                        <h3> Feel The POP (Japanese Version)</h3>
-                        <p>May 17, 2024</p>
-                        <p>– Japanese Single</p>
+        </section>
+
+        <!-- Album Modal -->
+        <div id="album-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div class="modal-header">
+                    <h2 id="modal-title" class="modal-title"></h2>
+                    <p id="modal-subtitle" class="modal-subtitle"></p>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-image">
+                        <img id="modal-cover" src="" alt="Album Cover">
                     </div>
-                </a>
-            </div>
-            <div class="album-item">
-                <a href="https://i.pinimg.com/736x/ba/d5/8a/bad58adbe2e5435e99c7afea1efbaf2f.jpg" target="_blank">
-                    <img src="https://i.pinimg.com/736x/ba/d5/8a/bad58adbe2e5435e99c7afea1efbaf2f.jpg" alt="Sweet Boy" class="album-cover">
-                    <div class="album-info">
-                        <h3>Good So Bad (Japanese Version)</h3>
-                        <p>August 30, 2024</p>
-                        <p>– Japanese Digital Single</p>
+                    <div class="modal-details">
+                        <p id="modal-type"><strong>Album:</strong> </p>
+                        <p id="modal-release"><strong>Release Date:</strong> </p>
+                        <div class="tracklist-section">
+                            <h3>Tracklist:</h3>
+                            <div id="modal-tracklist">
+                                <!-- Tracklist will be added here -->
+                            </div>
+                        </div>
                     </div>
-                </a>
-            </div>
-            <div class="album-item">
-                <a href="https://i.pinimg.com/736x/56/1e/dd/561eddbd2b288389b9532ced9072009d.jpg" target="_blank">
-                    <img src="https://i.pinimg.com/736x/56/1e/dd/561eddbd2b288389b9532ced9072009d.jpg" alt="ZEROBASEONE" class="album-cover">
-                    <div class="album-info">
-                        <h3>PREZENT</h3>
-                        <p>January 29, 2025</p>
-                        <p>– Japanese EP Album</p>
-                    </div>
-                </a>
-            </div>
-            <div class="album-item">
-                <a href="https://pbs.twimg.com/media/Glr7KMNWgAA1xLK?format=jpg&name=medium" target="_blank">
-                    <img src="https://pbs.twimg.com/media/Glr7KMNWgAA1xLK?format=jpg&name=medium" alt="Scroll" class="album-cover">
-                    <div class="album-info">
-                        <h3>BLUE (Japanese Version)</h3>
-                        <p>March 21, 2025</p>
-                        <p>– Japanese Digital Single</p>
-                    </div>
-                </a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <footer class="footer">
         <div class="footer-nav">
@@ -167,5 +101,10 @@
             Icons by <a target="_blank" href="https://icons8.com">Icons8</a>
         </div>
     </footer>
+
+    <script src="assets/js/album.js"></script>
+    <script src="assets/js/slider.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/loading.js"></script>
 </body>
 </html>

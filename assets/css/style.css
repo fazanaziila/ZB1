@@ -4,6 +4,32 @@
     box-sizing: border-box;
 }
 
+/* Loading Page Styles */
+.loading-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #d3e9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.loading-page.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-page img {
+    max-width: 100px;
+    height: auto;
+}
+
 /* Members Section Styles */
 .members-container {
     padding: 4rem 2rem;
@@ -307,22 +333,49 @@ body {
 }
 
 .album-info {
-    padding: 1rem;
-    text-align: center;
+    padding: 1.5rem;
+    text-align: left;
     background: #ffffff;
     color: #08124f;
 }
 
 .album-info h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 0.5rem;
+    color: #000051;
 }
 
-.album-info p {
-    margin: 0;
+.album-info .album-type,
+.album-info .release-date {
+    margin: 0.3rem 0;
     font-size: 0.9rem;
-    opacity: 0.9;
+    color: #666;
+}
+
+.album-info .tracklist {
+    margin-top: 1rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.album-info .tracklist h4 {
+    color: #000051;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.album-info .tracklist ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.album-info .tracklist li {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
 }
 
 .video-title {
@@ -432,18 +485,31 @@ h1.page-title {
     padding: 30px;
 }
 
-.modal-title {
+.modal-header {
     text-align: center;
+    margin: 0 0 20px 0;
+}
+
+.modal-title {
     color: #000051;
-    font-size: 28px;
-    margin: 0 0 30px 0;
-    padding: 0;
+    font-size: 24px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.modal-subtitle {
+    color: #666;
+    font-size: 16px;
+    margin: 5px 0 0 0;
+    font-style: italic;
+    font-family: Arial, sans-serif;
 }
 
 .modal-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
+    padding: 0;
 }
 
 .modal-left {
@@ -460,7 +526,18 @@ h1.page-title {
     position: relative;
 }
 
+.modal-image {
+    width: 100%;
+}
+
 #modal-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#modal-cover {
     width: 100%;
     height: 400px;
     object-fit: cover;
@@ -488,9 +565,30 @@ h1.page-title {
 }
 
 .modal-details {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    padding: 0 0 0 40px;
+    font-family: Arial, sans-serif;
+    margin-top: 0;
+}
+
+.modal-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.modal-details h2 {
+    color: #000051;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.modal-details .member-info p {
+    margin: 15px 0;
+    font-size: 16px;
+    color: #333;
 }
 
 .member-info {
@@ -513,6 +611,10 @@ h1.page-title {
     font-family: Arial, sans-serif;
     font-size: 30px;
     font-weight: 600;
+}
+
+.member-info strong {
+    color: #000051;
 }
 
 .gallery-section {
@@ -552,23 +654,251 @@ h1.page-title {
     }
 }
 
-.modal-details {
+.tracklist-section {
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.tracklist-section h3 {
+    color: #000051;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}
+
+tracklist-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+tracklist-section li {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 6px;
+    padding: 3px 0;
+}
+
+.track-item {
+    font-size: 15px;
+    color: #333;
+    margin: 6px 0;
+    font-family: Arial, sans-serif;
+}
+
+#modal-tracklist {
+    margin: 0;
+    padding: 0;
+}
+
+#modal-tracklist li {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 8px;
+    padding: 3px 0;
+    font-family: Arial, sans-serif;
+    list-style: none;
+}
+
+.album-container {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    min-height: 100vh;
+}
+
+.album-section {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+}
+
+.album-section h2 {
+    text-align: center;
+    color: #000051;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     padding: 20px;
 }
 
-.modal-details h2 {
-    color: #000051;
-    margin-bottom: 20px;
-    font-size: 24px;
+.album-item {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 81, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.modal-details .member-info p {
-    margin: 15px 0;
+.album-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 81, 0.2);
+}
+
+.album-cover {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.album-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.album-info h3 {
+    color: #000051;
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.album-info p {
+    color: #666;
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+/* Album Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 15px;
+    position: relative;
+    animation: modalFadeIn 0.3s ease-in-out;
+    padding: 30px;
+}
+
+.modal-title {
+    text-align: center;
+    color: #000051;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 0;
+}
+
+.modal-image {
+    width: 100%;
+}
+
+#modal-cover {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.modal-details {
+    padding: 0 0 0 40px;
+    font-family: Arial, sans-serif;
+    margin-top: 0;
+}
+
+.modal-details p {
+    margin: 5px 0;
     font-size: 16px;
     color: #333;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
 }
 
-.member-info strong {
+.tracklist-section {
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.tracklist-section h3 {
     color: #000051;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}
+
+tracklist-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+tracklist-section li {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 6px;
+    padding: 3px 0;
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    color: #666;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.close-button:hover {
+    color: #000;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .album-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .album-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-image {
+        margin-bottom: 20px;
+    }
+    
+    #modal-cover {
+        height: 300px;
+    }
 }
 
